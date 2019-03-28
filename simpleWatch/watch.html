@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iWatch</title>
+</head>
+<body>
+    <div style="text-align:center;"><h1>简易时钟</h1></div>
+    <div style="text-align:center;"><canvas id="one" width="800" height="500"></canvas></div>
+    <div style="text-align:center;font-size:35px;" id="date"></div>
+
+    <script>
+        let date = document.getElementById("date");
+        let d = new Date();
+
+        console.log(d);
+        date.innerHTML = d.toDateString();
+
+        let one = document.getElementById("one");
+        let context = one.getContext("2d");
+
+        function clock(){
+            context.clearRect(0, 0, 800, 800); //清除画布
+
+            //获取当前时间
+            let hour = new Date().getHours();
+            let minute = new Date().getMinutes();
+            let second = new Date().getSeconds();
+
+            //设置表盘
+            //设置两个渐变色参数
+            let g1 = context.createRadialGradient(400, 250, 0, 400, 250, 200);
+            g1.addColorStop(0, "#fcfcfc");
+            g1.addColorStop(1, "#defdff");
+            // 设置线条宽度
+            context.lineWidth = 2;
+            context.fillStyle = g1;
+            context.beginPath();
+            // 绘制圆盘
+            context.arc(400, 250, 200, 0, 360, false);
+            context.closePath();
+            context.fill();
+
+            context.stroke();
+
+            context.fillStyle="brown";
+            context.beginPath();
+            // 绘制表芯
+            context.arc(400, 250, 10, 0, 360, false);
+            context.closePath();
+            context.fill();
+
+            // 时针刻度盘
+            for(let i = 0; i < 12; i++){
+                context.save();
+                // 将坐标原点移动到圆心处
+                context.translate(400, 250);
+                // 将表盘旋转
+                context.rotate(i*30*Math.PI/180);
+                context.beginPath();
+                context.moveTo(0, -200);
+                context.lineTo(0, -180);
+                context.closePath();
+                context.stroke();
+                context.restore();
+            }
+
+            //分针刻度盘和秒针刻度盘
+            for(let i = 0; i < 60; i++){
+                if(i % 5 != 0){
+                    context.save();
+                    context.strokeStyle="red";
+                    context.translate(400, 250);
+                    // 旋转表盘
+                    context.rotate(i*6*Math.PI/180);
+                    context.beginPath();
+                    context.moveTo(0, -200);
+                    context.lineTo(0, -190);
+                    context.closePath();
+                    context.stroke();
+                    context.restore();
+                }
+            }
+            context.save();
+            context.fillStyle = "black";
+            let hours = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2];
+            context.font = "26px Arial";
+            context.textAlign = "center";
+            context.textBaselise = "middle";
+
+            // 画时刻
+            hours.forEach(function(number, i){
+                let rad = 2 * Math.PI / 12 * i; // 把圆分为12个弧度
+                let x = Math.cos(rad)*(200 - 30) + 400;
+                let y = Math.sin(rad)*(200 - 30) + 250;
+                context.fillText(number, x, y);
+            });
+            context.stroke();
+            context.restore();
+
+            // 秒针
+            context.save();
+            context.fillStyle="red";
+            context.translate(400, 250);
+            context.rotate(second*6*Math.PI/180);
+            context.beginPath();
+            context.moveTo(0, -170);
+            context.lineTo(-5, -30);
+            context.lineTo(0, -10);
+            context.lineTo(5, -30);
+            context.closePath();
+            context.fill();
+            context.restore();
+
+            // 分针
+            context.save();
+            context.fillStyle = "blue";
+            context.translate(400, 250);
+            context.rotate(minute*6*Math.PI/180);
+            context.beginPath();
+            context.moveTo(0, -150);
+            context.lineTo(-5, -30);
+            context.lineTo(0, -10);
+            context.lineTo(5, -30);
+            context.closePath();
+            context.fill();
+            context.restore();
+
+            // 时针
+            context.save();
+            context.lineWidth = 2;
+            context.fillStyle = "black";
+            context.translate(400, 250);
+            context.rotate(hour*30*Math.PI/180);
+            context.beginPath();
+            context.moveTo(0, -130);
+            context.lineTo(-8, -30);
+            context.lineTo(0, -10);
+            context.lineTo(8, -30);
+            context.closePath();
+            context.fill();
+            context.restore();
+
+        }
+        clock();
+        setInterval(clock, 1000);
+    </script>
+</body>
+</html>
