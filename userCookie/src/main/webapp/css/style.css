@@ -1,0 +1,16 @@
+body{
+    font-size: 20px;
+    margin: 0 auto;
+    background: #fef5e6;
+}
+
+.question{
+    font-weight: bold;
+}
+
+#answer{
+    padding: 10px;
+    color: red;
+    font-size: 12px;
+}
+
