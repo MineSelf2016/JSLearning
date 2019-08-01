@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>子字符串</title>
+</head>
+<body>
+    <script>
+        let path = "http://edu.nodeing.com/course/83/task/1788/show.html";
+        let pos = path.lastIndexOf(".") + 1;
+        let fileType = path.substr(pos);
+
+        alert("pos: " + pos);
+        alert("fileType: " + fileType);
+    </script>
+</body>
+</html>

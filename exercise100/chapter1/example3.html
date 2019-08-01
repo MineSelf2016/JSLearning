@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串查找</title>
+</head>
+<body>
+    <script>
+        let str1 = "hello nodeing.com!!!";
+        let str2 = "codeing";
+
+        // indexOf 方法，若找到，返回起始位置；若未找到，返回数字 -1;
+        let result = str1.indexOf(str2);
+        alert(typeof result);
+
+        if (result !== -1)  {
+            alert("找到了，起始位置是" + result);
+        } else {
+            alert("未找到。");
+        }
+    
+    </script>
+
+
+</body>
+</html>

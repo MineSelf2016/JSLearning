@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串连接</title>
+    <style>
+        .box1 {
+            color: red;
+        }
+    
+    </style>
+    
+</head>
+<body>
+        <script>
+            let cssName = "box";
+            let cssNum = 1;
+
+            // 修改时注意两端是单引号还是双引号，一般刚开始若是使用的双引号，则一直使用双引号
+            // let html = "<div class='"+cssName+cssNum+"'>这里是"+cssName+cssNum+"</div>";
+            let html = "<div class='" + cssName + cssNum + "'>这里是" + cssName + cssNum + "</div>";
+            document.body.innerHTML = html;
+        </script>
+</body>
+</html>

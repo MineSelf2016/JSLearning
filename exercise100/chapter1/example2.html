@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串比较</title>
+</head>
+<body>
+    
+    <script>
+        let str1 = prompt("请输入一个单词：");
+        let str2 = "hello";
+        let str3 = new String("hello");
+        let type1 = typeof str1;
+        let type2 = typeof str2;
+        let type3 = typeof str3;
+        alert("str1 type: " + type1);
+        alert("str2 type: " + type2);
+
+        // 使用new 返回的对象类型均为Object
+        alert("str3 type: " + type3);
+
+        // 不全等比较时，只比较值
+        alert(str1 == str2);
+        alert(str1 == str3);
+
+        // 全等比较时，既比较值，又比较类型
+        alert(str1 === str3);
+    
+    </script>
+</body>
+</html>

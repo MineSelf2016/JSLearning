@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>判断非空字符串</title>
+</head>
+<body>
+<script>
+    function checkString(s) {
+
+        let flag1 = (typeof s) !== "undefined";
+        let flag2 = Object.prototype.toString.call(s) === "[object String]";
+        // let flag2 = (s instanceof String);
+        let flag3 = s.length > 0;
+        if (flag1 && flag2 && flag3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    let s = "123";
+    let flag = checkString(s);
+
+    alert(flag);
+</script>
+    
+</body>
+</html>
