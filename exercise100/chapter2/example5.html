@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>匀速运动</title>
+    <style>
+        #box {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0px;
+        }
+    
+    </style>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <button id="cancle">停止</button>
+    <div id="box"></div>
+
+    <script>
+        let oBtn = document.getElementById("btn");
+        let oBox = document.getElementById("box");
+        let oCancle = document.getElementById("cancle");
+        let speed = 0;
+        let t1 = null;
+
+        oBtn.onclick = function move() {
+            oBox.style.left = speed + "px";
+            speed += 5;
+            t1 = setTimeout(move, 100);
+        }
+    
+        oCancle.onclick = function stop() {
+            clearInterval(t1);
+        }
+
+    </script>
+</body>
+</html>

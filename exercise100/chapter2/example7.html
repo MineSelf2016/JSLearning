@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跳转到首页</title>
+</head>
+<body>
+    <h3 id="h3">5秒后跳转至百度页面</h3>
+
+    <script>
+        let oH3 = document.getElementById("h3");
+        let num = 5;
+
+        setInterval(function (){
+            num--;
+            oH3.innerText = num + "秒后跳转至百度页面";
+            if (num <= 0) {
+                window.location.href = "http://www.baidu.com";
+                clearInterval(this);
+            }
+
+        }, 1000);
+    </script>
+</body>
+</html>

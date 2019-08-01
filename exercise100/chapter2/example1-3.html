@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>记录时间</title>
+    <script>
+    // 日期格式转换
+    Date.prototype.format = function(fmt) {
+        let o = {
+            "M+" : this.getMonth()+1,                 //月份
+            "d+" : this.getDate(),                    //日
+            "h+" : this.getHours(),                   //小时
+            "m+" : this.getMinutes(),                 //分
+            "s+" : this.getSeconds(),                 //秒
+            "q+" : Math.floor((this.getMonth()+3)/3), //季度
+            "S"  : this.getMilliseconds()             //毫秒
+        };
+        if(/(y+)/.test(fmt)) {
+            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+        }
+        for(let k in o) {
+            if(new RegExp("("+ k +")").test(fmt)){
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length===1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+            }
+        }
+        return fmt;
+    };
+
+    </script>
+</head>
+<body>
+    <script>
+        
+        // 创建一个日期，特定的时间，
+        // 需要注意的是，月份的范围是 0 - 11
+        let date = new Date(2019, 7, 1, 12, 20, 0);
+        let fromat_date = new Date().format("yyyy-MM-dd hh:mm");
+        console.log(date.toLocaleString());
+        console.log(fromat_date);
+
+        let start = date;
+        let end = new Date();
+        let during = end - start;
+
+        console.log(start, end);
+        console.log(during);
+
+    </script>
+</body>
+</html>
