@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>列表连接</title>
+</head>
+<body>
+    <ul>
+
+    </ul>
+
+
+    <script>
+        let oUl = document.getElementsByTagName("ul")[0];
+        let names = prompt("请输入几个名字，以中文逗号分隔");
+        let nameArr = names.split("，");
+
+        for (let i = 0, len = nameArr.length; i < len; i++) {
+            // li += "<li>" + nameArr[i] + "</li>";
+            let li = document.createElement("li");
+            li.innerHTML = nameArr[i];
+            oUl.appendChild(li);
+        }
+    
+    </script>
+</body>
+</html>
