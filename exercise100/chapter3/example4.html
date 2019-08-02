@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成n ~ m间的随机整数</title>
+</head>
+<body>
+    <script>
+        // 获取 [n, m) 间的随机整数
+        function getRandom (min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        for (let i = 0; i < 30; i++) {
+            console.log(getRandom(10, 30));
+        }
+    
+    </script>
+</body>
+</html>

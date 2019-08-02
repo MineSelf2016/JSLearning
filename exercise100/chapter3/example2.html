@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成随机颜色的方块</title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 50px 60px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <div id="box"></div>
+
+    <script>
+        let oBtn = document.getElementById("btn");
+        let oBox = document.getElementById("box");
+        let red = 0;
+        let green = 0;
+        let blue = 0;
+
+        oBtn.onclick = function (){
+            red = Math.floor(Math.random() * 256);
+            green = Math.floor(Math.random() * 256);
+            blue = Math.floor(Math.random() * 256);
+            // console.log(red, green, blue);
+            oBox.style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
+        }
+    
+    
+    </script>
+</body>
+</html>

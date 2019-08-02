@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弧度转角度</title>
+</head>
+<body>
+    <script>
+        // 弧度 = 角度 * PI / 180
+        // 角度 = 弧度 * 180 / PI
+        function radis2angle (radis) {
+            return radis * 180 / Math.PI;
+        }
+
+        // js中的三角函数，如 Math.sin(x)，x 是一个弧度值
+
+        alert(radis2angle(3.1415926));
+    
+    </script>
+</body>
+</html>

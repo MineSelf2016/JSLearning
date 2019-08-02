@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>判断三角形形状</title>
+</head>
+<body>
+    <script>
+        function checkTriangle(line1, line2, line3) {
+
+            // 完成排序？
+            let arr = [].sort.call(arguments);
+            console.log(arr);
+            let a = arr[0];
+            let b = arr[1];
+            let c = arr[2];
+
+            if (a + b <= c) {
+                return "不能构成三角形";
+            }else {
+
+            }
+            
+            if (a * a + b * b < c * c) {
+                return "锐角三角形";
+            } else if (a * a + b * b === c * c) {
+                return "直角三角形";
+            } else {
+                return "钝角三角形";
+            }
+
+        }
+
+        alert(checkTriangle(10, 4, 5));
+
+    
+    </script>
+</body>
+</html>

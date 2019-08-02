@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成验证码</title>
+</head>
+<body>
+    验证码：<input id="input" type="text">
+    <button id="btn">点击</button>
+
+
+    <script>
+        let oInput = document.getElementById("input");
+        let oBtn = document.getElementById("btn");
+
+        function generateCode(codeLen) {
+            let dict = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let code = "";
+            for (let i = 0; i < codeLen; i++) {
+                    code += dict[Math.floor(Math.random() * 62)];
+                }
+            return code;
+        }
+
+        oBtn.onclick = function () {
+            let code = generateCode(6);
+            oInput.value = code;
+        }
+    
+    </script>
+</body>
+</html>

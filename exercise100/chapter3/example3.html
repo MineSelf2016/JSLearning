@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算商品总价</title>
+</head>
+<body>
+    <form action="#">
+        <!-- input标签取值时使用 value 属性 -->
+        单价：<input type="text" value="¥19.8元">
+        数量：<input type="text">
+        总价：<input type="text">
+
+        <button id="btn">计算</button>
+    </form>
+
+
+    <script>
+        let oPrice = document.getElementsByTagName("input")[0];
+        let oQuantity = document.getElementsByTagName("input")[1];
+        let oAmount = document.getElementsByTagName("input")[2];
+        let oBtn = document.getElementById("btn");
+
+        oBtn.onclick = function () {
+            price = oPrice.value.substr(1);
+            price = parseFloat(price);
+            quantity = oQuantity.value;
+
+            let amount = price * quantity;
+            
+            oAmount.value = amount.toFixed(2);
+        }
+    
+    </script>
+</body>
+</html>
