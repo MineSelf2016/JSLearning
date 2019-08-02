@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片自动播放</title>
+</head>
+<body>
+    <div class="content">
+        <p id="title">这是自动播放的文本</p>
+        <p id="txt">现在显示第 1 段内容</p>
+    </div>
+
+    <script>
+        let oTxt = document.getElementById("txt");
+        let num = 1;
+        let content = null;
+
+        setInterval(function () {
+            num++;
+            if (num > 5){
+                num = 1;
+            }
+            content = "现在显示第 " + num + " 段内容";
+            oTxt.innerText = content;
+        }, 1000);
+    
+    </script>
+
+</body>
+</html>
