@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>进制转换</title>
+</head>
+<body>
+    <script>
+        let arr = [1, 22, 334, 56, 255];
+        
+        let arr2 = arr.map(function (value, index, arr2) {
+            // 此处的arr2 是arr 的浅复制
+
+            // console.log("value = ", value);
+            // console.log("index = ", index);
+            // console.log(arr2);
+            arr[index] = value.toString(16);
+
+            // map 函数有返回值，每次的返回值对应至原数组的下标位置元素，返回的新数组可初始化/赋值给变量
+            return 1;
+        });
+
+        console.log("arr = ", arr);
+        console.log("arr2 = ", arr2);
+    
+    </script>
+</body>
+</html>

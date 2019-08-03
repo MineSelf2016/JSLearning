@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>求二维数组中的最大值</title>
+</head>
+<body>
+    <script>
+        let arr = [
+            [2, 33, 0, 9],
+            [40, 56, 28, 7],
+            [34, 4999, 9, 32]
+        ];
+        let maxValue = arr[0][0];
+
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] > maxValue) {
+                    maxValue = arr[i][j];
+                }
+            }
+        }
+    
+        console.log("maxValue = ", maxValue);
+    
+    </script>
+</body>
+</html>

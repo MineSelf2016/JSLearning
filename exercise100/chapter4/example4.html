@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>filter 方法</title>
+</head>
+<body>
+    <script>
+       let students = [
+            {id: 1, name: 'xiaoqiang', age: '18', score: 90},
+            {id: 2, name: 'xiaoqiang', age: '19', score: 50},
+            {id: 3, name: 'xiaoqiang', age: '29', score: 40},
+            {id: 4, name: 'xiaoqiang', age: '34', score: 60},
+            {id: 5, name: 'xiaoqiang', age: '24', score: 80}
+        ]
+
+        let num = prompt("请输入学生id：");
+
+        // filter() 方法接受回调函数，与map 用法一致，返回符合条件的项目组成的数组
+        // 返回值若为ture，则保留该项；若为false，则丢弃该项
+        let result = students.filter(function (value, index, arr) {
+            // if (value.id === parseInt(num)) {
+            //     return true;
+            // }
+            // return false;
+
+            return value.id === parseInt(num);
+        });
+
+        console.log(result);
+    </script>
+</body>
+</html>

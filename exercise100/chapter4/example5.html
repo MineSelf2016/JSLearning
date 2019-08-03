@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>判断是否为数组</title>
+</head>
+<body>
+    <script>
+        let arr = [];
+
+        // 1、使用instanceof 关键字
+        console.log(arr instanceof Array);
+
+        // 2、使用构造函数判断
+        console.log(arr.constructor === Array);
+
+        // 3、使用toString() 方法
+        console.log(Object.prototype.toString.call(arr) === "[object Array]");
+
+        // 4、es5 新特性：使用isArray() 方法
+        console.log(Array.isArray(arr));
+
+        // 在不支持es 5 的浏览器上使用方法3 是最佳选择，
+        // 因为若html页面中存在iframe 元素，则前两种方案失效。
+    
+    
+    </script>
+</body>
+</html>
