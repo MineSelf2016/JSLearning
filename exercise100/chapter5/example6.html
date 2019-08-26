@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>执行栈与作用域链_2</title>
+</head>
+<body>
+<script>
+    // 作用域以定义的时候为准，
+    // 不是以函数调用栈的顺序为准。
+    let a = 1;
+    function fn1(){
+        function fn3(){
+            let a = 4;
+            fn2();
+        }
+        let a = 2;
+        return fn3;
+    }
+    function fn2(){
+        console.log(a);
+    }
+    let fn = fn1();
+
+    fn(); //输出多少
+</script>
+</body>
+</html>

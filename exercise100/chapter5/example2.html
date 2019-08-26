@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    function sum() {
+        // map 方法
+        // let s = 0;
+        // [].map.call(arguments, function (item) {
+        //     s += item;
+        // });
+        // return s;
+
+        // reduce 方法
+        return [].reduce.call(arguments, function (sum, value) {
+            return sum + value;
+        }, 0)
+    }
+
+    // ECMA6 没有定义arguments 对象，但新增了...rest 对象
+    let es6sum = (...rest) => {
+        return rest.reduce((sum, value) => sum + value);
+    };
+    console.log(sum(1, 2, 3, 4, 5));
+    console.log(es6sum(1, 2, 3, 4, 5));
+</script>
+</body>
+</html>

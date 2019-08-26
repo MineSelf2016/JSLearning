@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // 1. 封装一个函数，要求将字符串转换成数组弹出
+        /**
+         * 1 函数的名字：根据函数的功能，见名知意；
+         * 2 函数的参数：局部变量；
+         * 3 返回值：return 语句，若没有return ，则为undefined
+         */
+
+        /**
+         * 2. 封装一个函数，要求三个数中的最小值，禁止使用Math.min()
+         * 方法：采用类数组arguments 结合call 方法。
+         */
+        function min(a ,b ,c) {
+            console.log(arguments);
+            console.log([].sort.call(arguments));
+            return [].sort.call(arguments)[0];
+        }
+
+        let result = min(4, 8, 5);
+        console.log("result = ", result);
+    </script>
+</body>
+</html>

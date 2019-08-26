@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>执行栈与作用域链_1</title>
+</head>
+<body>
+<script>
+    // 看程序，写结果
+    let a = 1;
+    function fn1(){
+        function fn2(){
+            // 若当前作用域没有a 的定义，则向上一层函数找参数a 的定义。
+            console.log(a);
+        }
+        function fn3(){
+            let a = 4;
+            fn2()
+        }
+        let a = 2;
+        return fn3;
+    }
+    let fn = fn1();
+    fn(); //输出多少
+
+</script>
+
+
+</body>
+</html>

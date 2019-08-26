@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>变量提升在函数定义时的影响</title>
+</head>
+<body>
+<script>
+    // 1、函数声明，此时会运行完整个函数体， 从而之后的定义会覆盖前面的定义。
+    // function foo(){
+    //     function bar() {
+    //         return 3;
+    //     }
+    //     return bar();
+    //     function bar() {
+    //         return 8;
+    //     }
+    // }
+    // // 返回 8
+    // alert(foo());
+
+    // 2、函数表达式，
+    // 由于变量提升的存在，会导致bar 在函数最顶部存在隐式声明var bar = undefined，
+    // 故当执行到return 语句时，会在碰到的第一个return 语句就结束函数
+    function foo(){
+        // var bar = undefined;
+        var bar = function() {
+            return 3;
+        };
+        // 直接返回
+        return bar();
+        var bar = function() {
+            // console.log("执行了下面的bar 函数体");
+            return 8;
+        }
+    }
+    alert(foo());
+
+
+    // 3、隐式调用undefine()，会报错
+    // function foo(){
+    //     var bar = undefined;
+    //     return bar();
+    //     var bar = function() {
+    //         return 3;
+    //     };
+    //     var bar = function() {
+    //         return 8;
+    //     };
+    // }
+    // alert(foo());
+</script>
+</body>
+</html>

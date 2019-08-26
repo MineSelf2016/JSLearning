@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>默认值的设置</title>
+</head>
+<body>
+<script>
+
+    // 1、es5 写法，逻辑运算符短路，当有参数值为0 时，该方法错误。
+    // function fun(a, b, c) {
+    //     console.log("a = ", a, "b = ", b, "c = ", c);
+    //
+    //     a = a || 10;
+    //     b = b || 20;
+    //     c = c || 30;
+    //     console.log("a = ", a, "b = ", b, "c = ", c);
+    //     return a + b + c;
+    // }
+
+    // 2、es6 可以直接在形参列表中赋默认值，方向从右至左
+    function fun(a, b, c = 10) {
+        console.log("a = ", a, "b = ", b, "c = ", c);
+        console.log(a + b + c);
+    }
+
+    // fun(0, 10);
+
+    // 3、Object.assign() 方法，jQuery 的处理方式
+    // 将所有参数做成一个settings 对象，
+    // Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。
+    function f(settings) {
+        let defaultSettings = {
+            name: "小李",
+            age: 18,
+            course: "js基础",
+            gender: "男"
+        };
+
+        let options = Object.assign(defaultSettings, settings);
+        console.log(options);
+        console.log(options);
+    }
+
+    f({
+        name: "小红",
+        age: 20
+    })
+
+</script>
+</body>
+</html>

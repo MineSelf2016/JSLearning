@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>传递函数实现jQuery each() 函数</title>
+</head>
+<body>
+<script>
+    let $ = {
+        each : function (data, fn) {
+            // document.write(data);
+            let arr = [];
+            for (let i = 0; i < data.length; i++) {
+                // 处理逻辑在这里实现
+                let result = fn(data[i], i, data);
+                // data[i] = result;
+                arr.push(result);
+            }
+            return arr;
+        }
+    };
+
+    let data = [1, 2, 3, 4];
+    let result = $.each(data, function (value, index, data) {
+        return (value > 2 ? value + 1 : value - 1);
+    });
+
+    console.log("data = ", data);
+    console.log("result = ", result);
+
+</script>
+</body>
+</html>
