@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this 指向总结</title>
+</head>
+<body>
+<script>
+    /**
+     * 1. 函数是否在new中调用？如果是的话this指向的是新创建的对象；
+     * 2. 函数是否通过call、apply或者硬绑定调用？如果是的话，this指向的是指定的对象；
+     * 3. 函数是否在某个上下文对象中调用？如果是的话，则为隐式绑定，this指向的是那个上下文对象；
+     * 4. 如果都不是的话，使用默认绑定，如果在严格模式下，绑定到undefined，否则指向全局对象。
+     * 注意：箭头函数没有自己的this，其中的this 指向的是离其最近的外部环境的this，即第一次调用的时候的对象。
+     *
+     */
+
+</script>
+</body>
+</html>

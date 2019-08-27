@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this 的指向</title>
+</head>
+<body>
+<script>
+    /**
+     * this 到底是什么？
+     * 1、this的绑定和函数的声明位置没有关系，只取决于函数的调用方式；
+     * 2、当一个函数被调用时，会创建一个活动记录（有时候也称为执行上下文）。
+     *      这个记录会包含函数在哪里调用、函数的调用方式、传入的参数等信息，
+     *      this 就是这个活动记录的一个属性，会在函数的执行过程中用到。
+     */
+
+    function foo (num) {
+        console.log("foo:" + num);
+        console.log("this.count = ", this.count);
+        this.count++;
+    }
+    foo.count = 0;
+    for (let i = 0; i < 10; i++) {
+        if ( i > 5) {
+            // foo(i) 相当于 window.foo(i)
+            foo(i);
+
+            // 强制使用自身调用
+            // window.foo.call(foo, i);
+            // window.foo.apply(foo, [i]);
+        }
+    }
+    // 此时会foo.count 为 0，因为foo() 函数中的this 指向了window。
+    console.log("foo.count被调用了多少次?:" + foo.count)
+</script>
+</body>
+</html>

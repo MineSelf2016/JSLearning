@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>举例说明apply() 和call() 方法的异同点</title>
+</head>
+<body>
+
+<script>
+    let p1 = {
+        name: "小强",
+        age: 18,
+        showName: function () {
+            alert("名字：" + this.name);
+        },
+        goHome: function (name, age) {
+            alert(this.name + " went home with a person named " + name + " aged " + age);
+        }
+    };
+
+    let p2 = {
+        name: "小红",
+        age: 20,
+        course: "前端js 基础",
+        showAge: function () {
+            alert("年龄：" + this.age);
+        }
+    };
+
+    /**
+     * call() 方法和apply() 方法都可以用来把自身具有的方法借给其它对象，
+     * 实际是更改了自身函数中的 this 指向。
+     */
+
+    // p1 的showName() 方法借给p2，输出p2 中的属性值 "小红"：
+    // p1.showName.call(p2);
+
+    // p2 的showAge() 方法借给p1，输出p1 中的属性值 18：
+    // p2.showAge.call(p1);
+
+    /**
+     * call() 与apply() 都可以传递参数，
+     * 区别在于call() 传递一连串的参数，call() 传递的参数在一个数组里。
+     */
+    p1.goHome.call(p2, "Jerry", 15);
+    p1.goHome.apply(p2, ["Jerry", 15]);
+</script>
+</body>
+</html>

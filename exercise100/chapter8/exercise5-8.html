@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this 默认绑定与隐式绑定</title>
+</head>
+<body>
+<script>
+    // function foo () {
+    //     console.log(this.a)
+    // }
+    // let obj = {
+    //     a: 2,
+    //     foo: foo
+    // };
+    // let bar = obj.foo;
+    // let a = '我是全局属性a';
+    // bar()  //输出值为 undefined
+
+    var a = "我是全局属性a";
+    function foo () {
+        console.log(this.a);
+    }
+    var obj = {
+        a: 2,
+        foo: foo
+    };
+
+    // 绑定丢失，输出 "我是全局属性a"；
+    // var bar = obj.foo;
+    // bar();
+
+    // 使用call() 方法解决绑定丢失
+    var bar = obj.foo;
+    bar.call(obj);  //输出 2
+
+    // 使用包裹函数方法解决绑定丢失
+    // var bar = function () {
+    //     obj.foo();
+    // };
+    //
+    // bar();
+
+
+</script>
+</body>
+</html>

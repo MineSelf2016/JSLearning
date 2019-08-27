@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>硬绑定</title>
+</head>
+<body>
+<script>
+    function foo (something) {
+        console.log(this.a, something);
+        return this.a + something;
+    }
+    let obj = {
+        a: 2
+    };
+    let bar = function () {
+        // apply() 修改了this 指向，使得无论何时，this 总是指向obj，故为"硬绑定"。
+        // apply() 的第二个参数接受参数数组，arguments 刚好是数组，所以可直接使用。
+        return foo.apply(obj, arguments);
+    };
+    var b = bar(3);  //输出多少？
+    console.log(b);  //输出多少？
+
+</script>
+</body>
+</html>

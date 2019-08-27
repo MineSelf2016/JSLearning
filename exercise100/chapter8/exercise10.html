@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bind() 硬绑定</title>
+</head>
+<body>
+<script>
+    function foo (something) {
+        console.log(this.a, something);
+        return this.a + something;
+    }
+
+    // 自实现的bind() 硬绑定函数
+    function bind(fn, obj) {
+        // 补充代码
+        return function () {
+            return fn.apply(obj, arguments);
+        }
+    }
+
+    let obj = {
+        a: 2
+    };
+
+    let bar = bind(foo, obj);
+
+    // js 的内部实现：foo函数上的bind(obj) 函数可直接修改foo 函数内的指向为obj 参数对象。
+    let bar2 = foo.bind(obj);
+
+    let b = bar(3); // 2 3
+    let b2 = bar2(3);
+    console.log(b); // 5
+    console.log(b2);
+
+</script>
+
+</body>
+</html>
