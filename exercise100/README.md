@@ -294,3 +294,246 @@ js 中join() 方法与python join() 方法相反。
     arr2 = [1, 2, 3, 4];
     console.log(arr);
 ```
+
+## Chapter5 函数
+1. 按要求封装两个函数：
+    1.1 封装一个函数，要求输入字符串转化成数组弹出；
+    1.2 封装一个函数，要求能求出三个数中的最小值，注意：不准使用js内置函数。
+```javascript
+    function min(a ,b ,c) {
+        console.log(arguments);
+        console.log([].sort.call(arguments));
+        return [].sort.call(arguments)[0];
+    }
+```
+
+2. 封装一个函数，求参数的和，注意：参数不固定。
+```javascript
+    // ECMA6 没有定义arguments 对象，但新增了...rest 对象
+    let es6sum = (...rest) => {
+        return rest.reduce((sum, value) => sum + value);
+    };
+```
+
+3. 修改代码，给a，b，c设置默认值。
+```javascript
+    // 3、Object.assign() 方法，jQuery 的处理方式
+    // 将所有参数做成一个settings 对象，
+    // Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。
+    function f(settings) {
+        let defaultSettings = {
+            name: "小李",
+            age: 18,
+            course: "js基础",
+            gender: "男"
+        };
+
+        let options = Object.assign(defaultSettings, settings);
+        console.log(defaultSettings);
+        console.log(options);
+    }
+
+    f({
+        name: "小红",
+        age: 20
+    })
+```
+
+4. 写一个函数add，通过这种调用方式拿到结果：
+```javascript
+    function add(x) {
+        return function (y) {
+            return function (z) {
+                return x + y + z;
+            }
+        }
+    }
+    console.log(add(3)(4)(5));
+```
+
+5. 读程序，写结果：
+```javascript
+    var a = 1
+    function fn1(){
+        function fn2(){
+            console.log(a)
+        }
+        function fn3(){
+            var a = 4
+            fn2()
+        }
+        var a = 2
+        return fn3
+    }
+    var fn = fn1()
+    fn() //输出多少
+```
+
+6. 读程序，写结果：
+```javascript
+    var a = 1
+    function fn1(){
+        function fn3(){
+            var a = 4
+            fn2()
+        }
+        var a = 2
+        return fn3
+    }
+    function fn2(){
+        console.log(a)
+    }
+    var fn = fn1()
+    fn() //输出多少
+```
+
+7. 使用递归的方式求n的阶乘。
+```javascript
+    function fun(n) {
+        if (n === 0 || n === 1) {
+            return 1;
+        } else {
+            return n * fun(n - 1);
+        }
+    }
+
+    console.log(fun(5));
+```
+
+8. 实现jQuery each() 函数
+```javascript
+    let $ = {
+        each : function (data, fn) {
+            // document.write(data);
+            let arr = [];
+            for (let i = 0; i < data.length; i++) {
+                // 处理逻辑在这里实现
+                let result = fn(data[i], i, data);
+                // data[i] = result;
+                arr.push(result);
+            }
+            
+            // 返回一个新数组
+            return arr;
+        }
+    };
+
+    // 调用$.each()
+    let data = [1, 2, 3, 4];
+    let result = $.each(data, function (value, index, data) {
+        return (value > 2 ? value + 1 : value - 1);
+    });
+
+    console.log("data = ", data);
+    console.log("result = ", result);
+```
+
+9. 函数表达式造成的变量提升。
+```javascript
+    // 2、函数表达式，
+    // 由于变量提升的存在，会导致bar 在函数最顶部存在隐式声明var bar = undefined，
+    // 故当执行到return 语句时，会在碰到的第一个return 语句就结束函数
+    function foo(){
+        // var bar = undefined;
+        var bar = function() {
+            return 3;
+        };
+        // 直接返回
+        return bar();
+        var bar = function() {
+            // console.log("执行了下面的bar 函数体");
+            return 8;
+        }
+    }
+    alert(foo());
+```
+
+## Chapter6 事件
+1. 封装一个通用的事件绑定函数listenEvent。
+
+2. 封装一个通用的取消事件绑定函数stopListening。
+   
+3. 封装一个通用的阻止事件默认行为的函数preventEvent。
+
+4. 封装一个通用的阻止事件冒泡的函数 cancelPropagation。
+
+5. 写一个demo，控制方块的方向。
+```javascript
+    // 获取上下左右的键盘码
+    /**
+     * 左：37；
+     * 上：38；
+     * 右：39；
+     * 下：40
+     * @param ev
+     */
+```
+
+6. 立即执行函数完成闭包。
+```javascript
+    for (var i = 0; i < oButtonArr.length; i++) {
+        // 方法2：立即执行函数实现闭包。
+        oButtonArr[i].onclick = function (i) {
+            return function () {
+                alert(i);
+            }
+        }(i);
+
+    }
+```
+
+7. 写一个demo，加载单张图片。
+```javascript
+    let imgSrc = "http://edu.nodeing.com/files/system/block_picture_1516379328.jpg?version=8.2.14";
+    // 创建一个img 标签
+    let oImg = document.createElement("img");
+    console.log(oImg);
+    oImg.src = imgSrc;
+
+    // 加载完成后做逻辑处理
+    oImg.onload = function () {
+        document.body.appendChild(this);
+    }
+```
+
+8. 写一个demo，同步加载多张图片。
+```javascript
+    // 使用递归完成
+    function loadImage (index) {
+        if (index > multipleImg.length) {
+            return ;
+        }
+
+        let oImg = document.createElement("img");
+        oImg.title = "this is No." + index + " picture.";
+        oImg.src = multipleImg[index];
+        oImg.onload = function () {
+            document.body.appendChild(this);
+            loadImage(index + 1);
+        }
+    }
+
+    loadImage(0);
+```
+
+9. 写一个demo，获取鼠标在一个方块中的坐标，坐标原点为方块的左上顶点。
+```javascript
+    let oBox = document.getElementById("box");
+    document.onclick = function (ev) {
+        let event = ev || window.event;
+        // clientX 与clientY 是相对于当前浏览器窗口的左部与顶部的距离
+        // pageX 与pageY 是相对于整个页面的左部与顶部的距离
+        let clientX = event.clientX;
+        let clientY = event.clientY;
+        let pageX = event.pageX;
+        let pageY = event.pageY;
+        let left = oBox.offsetLeft;
+        let top = oBox.offsetTop;
+    }
+```
+
+10. 写一个demo，使用新的HTML5 拖放完成下列效果。
+```html
+<!--css 绘图-->
+
+```

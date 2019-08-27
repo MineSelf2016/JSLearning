@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>加载单张图片</title>
+</head>
+<body>
+    
+    <script>
+        let imgSrc = "http://edu.nodeing.com/files/system/block_picture_1516379328.jpg?version=8.2.14";
+        // 创建一个img 标签
+        let oImg = document.createElement("img");
+        console.log(oImg);
+        oImg.src = imgSrc;
+
+        // 加载完成后做逻辑处理
+        oImg.onload = function () {
+            document.body.appendChild(this);
+        }
+    
+    </script>
+</body>
+</html>

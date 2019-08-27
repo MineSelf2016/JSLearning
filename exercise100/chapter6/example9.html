@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clientX 与 pageX</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 100px;
+            background-color: black;
+            position: relative;
+            margin: 100px auto;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="box"></div>
+<script>
+    let oBox = document.getElementById("box");
+    document.onclick = function (ev) {
+        let event = ev || window.event;
+        // clientX 与clientY 是相对于当前浏览器窗口的左部与顶部的距离
+        // pageX 与pageY 是相对于整个页面的左部与顶部的距离
+        let clientX = event.clientX;
+        let clientY = event.clientY;
+        let pageX = event.pageX;
+        let pageY = event.pageY;
+        let left = oBox.offsetLeft;
+        let top = oBox.offsetTop;
+
+        console.log("clientX = ", clientX);
+        console.log("clientY = ", clientY);
+        console.log("pageX = ", pageX);
+        console.log("pageY = ", pageY);
+        console.log("left = ", left);
+        console.log("right = ", top);
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取键盘keycode </title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: rebeccapurple;
+            position: absolute;
+            left: 300px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<!--div 元素需要增加tabindex 属性才可以获取焦点 focus()-->
+<div id="box" tabindex="1"></div>
+
+<script>
+    // 1、获取上下左右的键盘码
+    /**
+     * 左：37；
+     * 上：38；
+     * 右：39；
+     * 下：40
+     * @param ev
+     */
+    let oBox = document.getElementById("box");
+    let offset = {
+        left: 300,
+        top: 300
+    };
+    document.onkeyup = function (event) {
+        let ev = event || window.event;
+        console.log(ev.keyCode);
+        switch (ev.keyCode) {
+            case 37:
+                offset.left -= 10;
+                break;
+            case 38:
+                offset.top -= 10;
+                break;
+            case 39:
+                offset.left += 10;
+                break;
+            case 40:
+                offset.top += 10;
+                break;
+            default:
+                console.log("方块不动");
+                break;
+        }
+        oBox.style.left = offset.left + "px";
+        oBox.style.top = offset.top + "px";
+    }
+
+</script>
+
+</body>
+</html>

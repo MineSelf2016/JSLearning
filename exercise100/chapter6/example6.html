@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包与块级作用域</title>
+</head>
+<body>
+<button>1</button>
+<button>2</button>
+<button>3</button>
+<button>4</button>
+<button>5</button>
+
+<script>
+    oButtonArr = document.getElementsByTagName("button");
+
+    for (var i = 0; i < oButtonArr.length; i++) {
+        // 方法1：自身存储。
+        // oButtonArr[i].index = i;
+        // oButtonArr[i].onclick = function () {
+        //     alert(this.index);
+        // }
+
+        // 方法2：立即执行函数实现闭包。
+        oButtonArr[i].onclick = function (i) {
+            return function () {
+                alert(i);
+            }
+        }(i);
+
+
+    }
+
+</script>
+</body>
+</html>

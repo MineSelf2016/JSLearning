@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装一个通用的事件移除函数</title>
+</head>
+<body>
+<script>
+    function removeEventListenr(obj, eventType, fn) {
+        if (obj.removeEventListener) {
+            obj.removeEventListener(eventType, fn ,false);
+        } else if (obj.detachEvent) {
+            obj.detachEvent(eventType, fn, false);
+        } else {
+            obj["on" + eventType] = null;
+        }
+    }
+
+    document.addEventListener("click", function event1() {
+        alert("!!!Hello!!!");
+        removeEventListenr(document, "click", event1);
+    }, false);
+    
+</script>
+
+</body>
+</html>

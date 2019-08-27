@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装一个通用的事件绑定函数</title>
+</head>
+<body>
+<script>
+    function addEventListenr(obj, eventType, fn) {
+        if (obj.addEventListener) {
+            obj.addEventListener(eventType, fn, false);
+        } else if (obj.attachEvent) {
+            obj.addEventListener(eventType, fn, false);
+        } else {
+            // 由于运算顺序的原因，此处不建议使用obj."on"+eventType
+            obj["on" + eventType] = fn;
+        }
+    }
+
+    addEventListenr(document, "click", function () {
+        // document.write("!!!Hello!!!");
+        alert("!!!Hello!!!");
+        // console.log("!!!Hello!!!");
+    })
+
+
+</script>
+</body>
+</html>

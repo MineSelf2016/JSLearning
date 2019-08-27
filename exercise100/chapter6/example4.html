@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装通用函数阻止事件冒泡</title>
+</head>
+<body>
+<button id="btn">点击一下</button>
+
+
+<script>
+    function cancelPropagation(ev) {
+        if (ev.stopPropagation) {
+            ev.stopPropagation();
+        } else {
+            ev.cancelBubble = true;
+        }
+    }
+
+    let oBtn = document.getElementById("btn");
+
+    document.onclick = function () {
+        alert("document");
+    };
+
+    oBtn.onclick = function (ev) {
+        // 阻止事件冒泡
+        ev = ev || window.event;
+        cancelPropagation(ev);
+        alert("btn");
+    };
+
+
+</script>
+</body>
+</html>

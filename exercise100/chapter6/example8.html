@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>同步加载多张图片</title>
+</head>
+<body>
+    <script>
+        let multipleImg = [
+            'http://edu.nodeing.com/files/system/block_picture_1516373242.jpg?version=8.2.14',
+            'http://edu.nodeing.com/files/system/block_picture_1516588307.jpg?version=8.2.14',
+            'http://edu.nodeing.com/files/system/block_picture_1516374079.jpg?version=8.2.14',
+            'http://edu.nodeing.com/files/system/block_picture_1516379328.jpg?version=8.2.14'
+        ];
+        
+        function loadImage (index) {
+            if (index > multipleImg.length) {
+                return ;
+            }
+
+            let oImg = document.createElement("img");
+            oImg.title = "this is No." + index + " picture.";
+            oImg.src = multipleImg[index];
+            oImg.onload = function () {
+                document.body.appendChild(this);
+                loadImage(index + 1);
+            }
+        }
+    
+        loadImage(0);
+    </script>
+</body>
+</html>
