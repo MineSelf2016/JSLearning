@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>window 对象实现删除</title>
+</head>
+<body>
+<ul>
+    <li>www.baidu.com <button id="btn">x</button></li>
+</ul>
+
+<script>
+    let oBtn = document.getElementById("btn");
+    oBtn.onclick = function () {
+        let flag = confirm("确认删除吗？");
+        if (flag === true) {
+            this.parentElement.remove();
+        }
+        // alert("flag = " + flag);
+        // console.log("window: ", window);
+    }
+
+</script>
+</body>
+</html>

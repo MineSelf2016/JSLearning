@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Navigator 与Location 对象</title>
+</head>
+<body>
+
+<script>
+    console.log(window.navigator.appVersion);
+    console.log(window.location.href);
+
+    let date = new Date();
+    // 含有reload 的页面上的显示语句要写在setInterval() 函数外面
+    document.write(date);
+    setInterval(function () {
+        window.location.reload();
+    }, 1000)
+
+</script>
+</body>
+</html>

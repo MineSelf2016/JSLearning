@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>窗口的打开与关闭</title>
+</head>
+<body>
+<button id="btn1">打开</button>
+<button id="btn2">关闭</button>
+
+<script>
+    let oBtn1 = document.getElementById("btn1");
+    let oBtn2 = document.getElementById("btn2");
+    let newWindow = null;
+
+    oBtn1.onclick = function () {
+        // 调用window.open() 函数完成窗口的打开，第一个参数为url，第二个参数为窗口名字，第三个为窗口大小与位置。
+        newWindow = window.open("http://www.baidu.com", "nw", "top=300,left=400,width=600,height=600");
+    };
+
+    oBtn2.onclick = function () {
+        newWindow.close();
+    }
+
+
+</script>
+</body>
+</html>

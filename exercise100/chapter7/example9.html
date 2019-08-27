@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>监听窗口大小</title>
+</head>
+<body>
+    <img src="http://edu.nodeing.com/files/system/block_picture_1516379328.jpg?version=8.2.14" alt="" width="300">
+    <script>
+        let oImg = document.getElementsByTagName("img")[0];
+
+        window.onresize = function () {
+            let cW = document.documentElement.clientWidth / 1200;
+            console.log("cW = ", cW);
+            oImg.width = (Math.ceil(cW * oImg.width));
+        }
+
+    </script>
+</body>
+</html>

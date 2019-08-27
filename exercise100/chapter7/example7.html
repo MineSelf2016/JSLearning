@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>构建面包屑导航</title>
+</head>
+<body>
+<!--<a href="http://www.baidu.com">百度一下</a>-->
+
+<script>
+    // let oAList = document.getElementsByTagName("a");
+    let oA = document.createElement("a");
+    let mainPath = window.location.protocol + "//" + window.location.host + "/";
+    oA.href = mainPath;
+    oA.innerText = "首页";
+    let body = document.body;
+    body.appendChild(oA);
+    pathname = window.location.pathname;
+
+    // 使用substr(1, pathname.length - 2) 处理开头的'/' 与末尾的'/'
+    pathArr = pathname.substr(1, pathname.length - 2).split("/");
+    console.log("pathArr length = ", pathArr.length);
+    console.log("pathArr = ", pathArr);
+    for (let i = 0; i < pathArr.length; i++) {
+        let perPath = pathArr[i];
+        mainPath += perPath + "/";
+        let newA = document.createElement("a");
+        newA.href = mainPath;
+        newA.innerText = " -> " + perPath;
+        body.appendChild(newA);
+    }
+
+</script>
+</body>
+</html>
