@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>私有、公共与静态方法和属性</title>
+</head>
+<body>
+<script>
+    function User(name) {
+
+        // name1 与getName1() 都是内部定义的，为私有的属性和方法，只能在内部使用，其它地方都访问不到！
+        var name1 = name;
+        function getName1() {
+            return name1;
+        }
+
+        // name2 为公共的属性，可以使用 obj.name2 访问到，前提是已经用 new User("xxx") 创建了obj 对象。
+        this.name2 = name;
+    }
+
+    // getName2() 为公共方法，可以使用 obj.getName2() 访问到，前提是已经用 new User("xxx") 创建了obj 对象。
+    User.prototype.getName2 = function () {
+        return this.name2;
+    };
+
+    // name3 与getName3 为静态属性，只能使用 User.name3 或 User.getName3() 访问！
+    User.name3 = 'xiaohong';
+    User.getName3 = function() {
+        return this.name2;
+    };
+    var p1 = new User('xiaoqiang');
+
+
+    // console.log(p1.name1);   // undefined
+    // console.log(p1.getName1());  //报错
+
+    // console.log(p1.name3);  // undefined
+    // console.log(p1.getName3()); //报错
+
+    // console.log(p1.name2);  // xiaoqiang
+    // console.log(p1.getName2);   // f() { return this.name2 }
+
+    // console.log(User.name3);    // xiaohong
+    // console.log(User.getName3());   // undefined
+
+    // console.log(User.name1);    // undefined
+    // console.log(User.getName1());   // 报错
+
+</script>
+
+</body>
+</html>

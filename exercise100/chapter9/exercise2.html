@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function Foo() {
+        console.log(this);
+        // 此处的getName() 与全局的getName() 是同一个函数
+        // 公共属性或方法必需使用this. 的形式声明，否则就会向上寻找该属性或方法的定义。
+        getName = function () { alert (1); };
+        return this;
+    }
+
+    // 公共属性或方法必需使用this. 的形式声明，否则就会向上寻找该属性或方法的定义。
+    Foo.getName = function () { age = 18; alert (2);};
+    Foo.prototype.getName = function () { alert (3);};
+
+    // 函数表达式，预解析阶段不执行，只声明 getName = undefined，正式执行阶段再执行。
+    var getName = function () { alert (4);};
+    // 函数声明，预解析阶段声明 getName = function () { alert (5); }，正式执行阶段不再执行。
+    function getName() { alert (5);}
+
+    // Question 1
+    // console.log(Foo.getName());    // 2, undefined
+
+    // Question 2
+    // getName();  // 4
+    // 输出4 的原因有亮点：
+    // 1、js 预解析：代码执行前，js 寻找所有的var、function 关键的定义，将其存储，则后面的 f () { alert(5) } 会覆盖之前的 undefined;
+    // 2、js 正式执行：函数表达式会覆盖预解析时的定义。
+
+    // Question 3
+    // Foo().getName();    // 1 执行Foo() 是，里面的getName 函数没有用var 声明，故使用的是外部的getName 函数，从而将其覆盖掉了。
+
+    // Question 4
+    // var xxx = new Foo.getName();  // 2
+    // console.log(xxx.age);   // undefined
+</script>
+</body>
+</html>

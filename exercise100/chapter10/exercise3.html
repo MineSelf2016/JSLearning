@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // Question 7
+    (function(){
+        var x = y = 1;
+        // 等价于
+        // var x = 1, y = 1;
+        // 等价于
+        // var x = 1;
+        // y = 1
+        // 故，此种定义方式会隐式声明一个全局变量y，又由于变量提升的存在，使得y 可被外部访问，而x 是私有属性，不能被访问。
+    })();
+    console.log(y);
+    // console.log(x);
+    // 输出 y 为 1， x 报错。
+
+
+    // Question 8
+    var a = /123/,
+        b = /123/;
+    // a, b均为正则表达式，正则表达式是obejct 类型，object 类型的间的比较是内存中地址的比较，地址值相同时，则二者相等，否则不想等。
+    console.log(typeof a);
+    console.log(typeof b);
+    console.log(a == b);
+    console.log(a === b);
+
+
+    // Question 9
+    var END = Math.pow(2, 53);
+    var START = END - 100;
+    var count = 0;
+    // js 数的范围为 -Math.pow(2, 53) ～ Math.pow(2, 53)，超出 Math.pow(2, 53) 范围的数就会被截断为 Math.pow(2, 53)；
+    // 故此处的i 可取值到 Math.pow(2, 53)，从而造成死循环。
+    for (var i = START; i <= END; i++) {
+        count++;
+    }
+    console.log(count);
+    // 输出 死循环，造成页面无法渲染完成，也就无法打开。
+
+</script>
+</body>
+</html>

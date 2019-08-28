@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    // Question 4
+    var str1 = String("A");
+    console.log(typeof str1);
+    // str1 为 string 类型。
+
+
+    // Question 5
+    var str2 = new String("B");
+    console.log(typeof str2);
+    // str2 为object 类型。
+
+
+    // Question 6
+    var a = [1];
+    // if () 的判断是数组与布尔值的逻辑运算，空数组转化为false，其它则为true。
+    if ([0]) {
+        // a == true 是关系运算，此时[0] 先转化为数字 0，再与true 做关系运算，0 == true 为false, 数字中只有1 与true 相等。
+        console.log(a == true);
+    } else {
+        console.log("wut");
+    }
+
+
+</script>
+</body>
+</html>

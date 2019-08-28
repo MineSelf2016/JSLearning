@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // Question 1
+    var name = "World!"
+    // 在匿名函数前增加分号是为了避免"无分号党"编写代码时，浏览器认为 "World!" 是一个函数。
+    ;(function () {
+        // 立即执行函数里面的变量提升
+        // var name = undefined;
+        if (typeof name === "undefined") {
+            var name = "Nodeing";
+            console.log("Goodbye " + name);
+        } else {
+            console.log("Hello " + name);
+        }
+    })();
+    // 输出 Goodby Nodeing
+
+
+    // Question 2
+    console.log(["1", "2", "3"].map(parseInt));
+    // 等价于
+    // console.log(["1", "2", "3"].map(function (value, index, array) {
+    //     return parseInt(value, index);
+    // }));
+    // 输出 1, NaN, Nan
+    // 该结果与parseInt(string, radix) 的radix 参数有关，具体详见 parseInt MDN。
+
+
+    // Question 3
+    var val = 'nodeing';
+    console.log('Value is ' + (val === 'noding') ? 'Something' : 'Nothing');
+    // 输出 Something ，加法的运算优先级高于 ? : 三目运算符
+
+
+</script>
+</body>
+</html>
