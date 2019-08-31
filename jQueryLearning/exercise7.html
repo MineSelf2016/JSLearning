@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <title>toggleClass、html、text</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 100px;
+            border: 1px solid red;
+        }
+
+        .bg {
+            background-color: orange;
+        }
+
+    </style>
+</head>
+<body>
+<button>切换背景</button>
+<button>添加文字</button>
+<button>获取内容</button>
+<div id="box"></div>
+
+<script>
+    $("button:eq(0)").click(function () {
+        $("#box").toggleClass("bg");
+    });
+
+    $("button:eq(1)").click(function () {
+        let str = "<h1>标题内容</h1>";
+
+        // html() 方法中的文字内容会被解析
+        $("#box").html(str);
+
+        // text() 方法中的文字内容不会被解析
+        // $("#box").text(str);
+    });
+
+    $("button:eq(2)").click(function () {
+        let html = $("#box").html();
+        let text = $("#box").text();
+
+        // html() 方法获取的文字内容是html 代码，且符号会以实体的方式出现。
+        // &lt;h1&gt;标题内容&lt;/h1&gt;
+        alert("html: " + html);
+
+        // text() 方法获取的文字内容就是网页所展示的内容，且符号不会以实体的方式展示
+        // <h1>标题内容</h1>
+        alert("text: " + text);
+    })
+
+</script>
+
+</body>
+</html>

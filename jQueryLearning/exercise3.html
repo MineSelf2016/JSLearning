@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <title>原生对象与jQuery 对象</title>
+</head>
+<body>
+<div id="box">111111</div>
+
+<script>
+    // 原生对象方式
+    // let oBox = document.getElementById("box");
+    // oBox.onclick = function () {
+    //     console.log(this);
+    //     this.innerHTML = "222222";
+    // };
+
+    // jQuery 对象方式
+    $("#box").click(function () {
+        // 此处的this 指向div 原生对象，不能使用jQuery 的方法，使用 $(this) 将原生对象转换为jQuery 对象。
+        console.log(this);
+        console.log($(this));
+        $("#box").html("222222");
+    });
+
+
+</script>
+</body>
+</html>

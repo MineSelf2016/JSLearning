@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <title>增加、获取、删除属性</title>
+</head>
+<body>
+<button>增加属性</button>
+<button>获取属性</button>
+<button>删除属性</button>
+<div type>item_1</div>
+<div type>item_2</div>
+<div type>item_3</div>
+<div type>item_4</div>
+<div type>item_5</div>
+
+<script>
+    // 1、添加属性
+    $("button:eq(0)").click(function () {
+        $("div[type]").each(function (index, value) {
+            $(value).attr("data-text", "nodeing_" + String(index));
+        })
+    });
+
+    // 2、获取属性
+    $("button:eq(1)").click(function () {
+        $("div[type]").each(function (index, value) {
+            console.log($(value).attr("data-text"));
+        })
+    });
+
+    // 3、删除属性
+    $("button:eq(2)").click(function () {
+        $("div[type]").each(function (index, value) {
+            $(value).removeAttr("data-text");
+        })
+    })
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <title>选择器过滤</title>
+</head>
+<body>
+<ul>
+    <li>item_1</li>
+    <li>item_2</li>
+    <li>item_3</li>
+    <li>item_4</li>
+    <li>item_5</li>
+    <li>item_6</li>
+    <li>item_7</li>
+    <li>item_8</li>
+    <li>item_9</li>
+    <li>item_10</li>
+</ul>
+
+<script>
+    // $("li").css("color", "red");
+    // $("li:first").css("color", "blue");
+    // $("li:last").css("color", "blue");
+    // $("li:odd").css("color", "blue");
+    // $("li:even").css("color", "blue");
+    // $("li:eq(2)").css("color", "blue");
+    // $("li:lt(2)").css("color", "blue");
+    // $("li:gt(2)").css("color", "blue");
+
+    // not 中仍然是完整的selector 写法
+    $("li:not(li:eq(2))").css("color", "blue");
+
+</script>
+
+</body>
+</html>

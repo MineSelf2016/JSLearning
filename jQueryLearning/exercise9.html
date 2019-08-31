@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <style>
+        table {
+            width: 50%;
+            margin: 50px auto;
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
+    <title>each 循环</title>
+</head>
+<body>
+<table>
+
+
+
+</table>
+
+<script>
+    let result = [
+        {"name": "张三_1", "age": 20, "course": "C++ 程序设计"},
+        {"name": "张三_2", "age": 20, "course": "C++ 程序设计"},
+        {"name": "张三_3", "age": 20, "course": "C++ 程序设计"},
+        {"name": "张三_4", "age": 20, "course": "C++ 程序设计"},
+        {"name": "张三_5", "age": 20, "course": "C++ 程序设计"},
+        {"name": "张三_6", "age": 20, "course": "C++ 程序设计"},
+        {"name": "张三_7", "age": 20, "course": "C++ 程序设计"},
+        {"name": "张三_8", "age": 20, "course": "C++ 程序设计"}
+    ];
+
+    let tableHTML = "<tr><td>姓名</td><td>年龄</td><td>课程</td></tr>";
+
+    $(result).each(function (index, value) {
+        // console.log("index = ", index);
+        // tableHTML += "<tr>" + value.name + "</tr><tr>" + String(value.age) + "</tr><tr>" + value.course + "</tr>";
+        tableHTML += "<tr><td>" + value.name + "</td><td>" + String(value.age) + "</td><td>" + value.course + "</td></tr>";
+    });
+
+    console.log(tableHTML);
+    $("table").html(tableHTML);
+
+</script>
+
+</body>
+</html>
