@@ -19,8 +19,6 @@
 <body>
 <table>
 
-
-
 </table>
 
 <script>
@@ -38,12 +36,9 @@
     let tableHTML = "<tr><td>姓名</td><td>年龄</td><td>课程</td></tr>";
 
     $(result).each(function (index, value) {
-        // console.log("index = ", index);
-        // tableHTML += "<tr>" + value.name + "</tr><tr>" + String(value.age) + "</tr><tr>" + value.course + "</tr>";
         tableHTML += "<tr><td>" + value.name + "</td><td>" + String(value.age) + "</td><td>" + value.course + "</td></tr>";
     });
 
-    console.log(tableHTML);
     $("table").html(tableHTML);
 
 </script>

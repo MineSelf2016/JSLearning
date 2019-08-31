@@ -9,6 +9,7 @@
     <title>CSS 设置与获取</title>
 </head>
 <body>
+<button>获取css 样式</button>
 <div class="container">
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut consequatur cum deserunt dolorem fugit ipsum, molestias nam nemo nisi porro praesentium, quae quos ratione rerum, saepe sed sit vero.</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias architecto asperiores atque aut culpa cum earum, error excepturi facilis fugiat ipsam ipsum libero natus optio perferendis placeat repellendus sequi voluptates.</p>
@@ -30,20 +31,26 @@
      *  3、函数对象方法。
      */
     // $("p").css("background-color", "gray").css("color", "orange");
-
+    //
     // $("p").css({
     //     "background-color": "gray",
     //     "color": "green"
     // });
 
-    // $("p").css("background-color", function (index) {
-    //     // console.log("index: ", index);
-    //     if (index % 2 === 0) {
-    //         return "red";
-    //     } else {
-    //         return "green";
-    //     }
-    // });
+    $("p").css("background-color", function (index) {
+        // console.log("index: ", index);
+        if (index % 2 === 0) {
+            return "red";
+        } else {
+            return "rgb(0, 255, 0)";
+        }
+    });
+
+    $("button:eq(0)").click(function () {
+        $("p").each(function (index, value) {
+            console.log($(value).css("background-color"));
+        })
+    });
 
 
 </script>
